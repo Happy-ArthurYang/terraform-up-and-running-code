@@ -11,7 +11,7 @@ terraform {
     # Replace this with your bucket name!
     bucket         = "terraform-up-and-running-state-ay"
     key            = "workspaces-example/terraform.tfstate"
-    region         = "us-east-2"
+    region         = "us-east-1"
 
     # Replace this with your DynamoDB table name!
     dynamodb_table = "terraform-up-and-running-locks-ay"
@@ -20,11 +20,11 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-east-2"
+  region = "us-east-1"
 }
 
 resource "aws_launch_configuration" "example" {
-  image_id        = "ami-0fb653ca2d3203ac1"
+  image_id        = "ami-0557a15b87f6559cf"
   instance_type   = "t2.micro"
   security_groups = [aws_security_group.instance.id]
 
