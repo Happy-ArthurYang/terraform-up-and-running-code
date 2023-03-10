@@ -16,7 +16,7 @@ provider "aws" {
 }
 
 resource "aws_efs_file_system" "efs" {
-   for_each = toset(var.efsnames)
+   for_each = toset([for name in var.efsnames:"${name}-${var.env}"])
    creation_token = each.key
    performance_mode = "generalPurpose"
    throughput_mode = "bursting"

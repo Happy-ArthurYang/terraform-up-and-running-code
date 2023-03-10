@@ -5,7 +5,7 @@ variable subnet_ids {
 
 variable efsnames{
   type =list(string)
-  default = [ "DECODREDbEfs-dev","DECODRMediaEfs-dev" ]
+  default = [ "DECODREDbEfs","DECODRMediaEfs" ]
 }
 # variable  azs{
 #   type = list(string)
