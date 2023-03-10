@@ -22,19 +22,19 @@ resource "aws_efs_file_system" "efs" {
    throughput_mode = "bursting"
    encrypted = "true"
  tags = {
-     Name = "${each.key}-${var.env}"
+     Name = each.key
    }
  }
 
 resource "aws_efs_mount_target" "efs-mt4DB" {
    count = length(var.subnet_ids)
-   file_system_id  = aws_efs_file_system.efs["DECODREDbEfs"].id
+   file_system_id  = aws_efs_file_system.efs["DECODREDbEfs-dev"].id
    subnet_id = var.subnet_ids[count.index]
    security_groups = ["sg-040c4ead4674d622f"]
  }
  resource "aws_efs_mount_target" "efs-mt4Media" {
    count = length(var.subnet_ids)
-   file_system_id  = aws_efs_file_system.efs["DECODRMediaEfs"].id
+   file_system_id  = aws_efs_file_system.efs["DECODRMediaEfs-dev"].id
    subnet_id = var.subnet_ids[count.index]
    security_groups = ["sg-040c4ead4674d622f"]
  }
