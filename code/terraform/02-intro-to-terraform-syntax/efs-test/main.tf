@@ -22,7 +22,7 @@ resource "aws_efs_file_system" "efs" {
    throughput_mode = "bursting"
    encrypted = "true"
  tags = {
-     Name = each.key
+     Name = "${each.key}-${var.env}"
    }
  }
 
