@@ -28,13 +28,20 @@ resource "aws_efs_file_system" "efs" {
 
 resource "aws_efs_mount_target" "efs-mt4DB" {
    count = length(var.subnet_ids)
-   file_system_id  = aws_efs_file_system.efs["db.sqlite3-${var.env}"].id
+   file_system_id  = aws_efs_file_system.efs["decodr-db.sqlite3-${var.env}"].id
    subnet_id = var.subnet_ids[count.index]
    security_groups = ["sg-040c4ead4674d622f"]
  }
  resource "aws_efs_mount_target" "efs-mt4Media" {
    count = length(var.subnet_ids)
-   file_system_id  = aws_efs_file_system.efs["media-${var.env}"].id
+   file_system_id  = aws_efs_file_system.efs["decodr-media-${var.env}"].id
    subnet_id = var.subnet_ids[count.index]
    security_groups = ["sg-040c4ead4674d622f"]
  }
+
+output dbefsid{
+    value = aws_efs_file_system.efs["decodr-db.sqlite3-${var.env}"].id
+}
+output mediaefsid{
+    value = aws_efs_file_system.efs["decodr-media-${var.env}"].id
+}
