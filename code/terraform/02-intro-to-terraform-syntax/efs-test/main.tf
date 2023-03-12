@@ -39,9 +39,9 @@ resource "aws_efs_mount_target" "efs-mt4DB" {
    security_groups = ["sg-040c4ead4674d622f"]
  }
 
-output dbefsid{
-    value = aws_efs_file_system.efs["decodr-db.sqlite3-${var.env}"].id
-}
-output mediaefsid{
-    value = aws_efs_file_system.efs["decodr-media-${var.env}"].id
-}
+# output dbefsid{
+#     value = aws_efs_file_system.efs["decodr-db.sqlite3-${var.env}"].id
+# }
+# output mediaefsid{
+#     value = aws_efs_file_system.efs["decodr-media-${var.env}"].id
+# }
